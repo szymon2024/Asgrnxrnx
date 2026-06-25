@@ -12,10 +12,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Install GHCup
         run: |
@@ -30,6 +32,6 @@ jobs:
           rm -f *.hi *.o
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2.1.0
+        uses: softprops/action-gh-release@v2
         with:
           files: asgrnxrnx
