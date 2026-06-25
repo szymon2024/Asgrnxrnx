@@ -32,7 +32,7 @@ jobs:
           del *.hi, *.o
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
           files: asgrnxrnx.exe
 

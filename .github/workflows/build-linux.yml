@@ -1,4 +1,4 @@
-name: Build macOS binary
+name: Build Linux binary
 
 permissions:
   contents: write
@@ -6,12 +6,12 @@ permissions:
 on:
   push:
     tags:
-      - "*_mac"
+      - "*_linux"
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
