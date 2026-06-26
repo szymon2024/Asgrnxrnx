@@ -17,13 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install GHCup
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://haskell.org | \
-          BOOTSTRAP_HASKELL_NONINTERACTIVE=1 GHCUP_INSTALL_BASE_PREFIX="${{ github.workspace }}" sh
-
-      - name: Add GHC to PATH
-        run: echo "${{ github.workspace }}/.ghcup/bin" >> $GITHUB_PATH
+      # Zastępujemy cały problematyczny krok curl oficjalną akcją setup-haskell
+      - name: Set up Haskell
+        uses: haskell/actions/setup@v2
+        with:
+          ghc-version: 'latest' # Możesz tu wpisać konkretną wersję, np. '9.6.3'
 
       - name: Compile asgrnxrnx
         run: |
