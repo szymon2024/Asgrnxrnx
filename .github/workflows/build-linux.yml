@@ -20,7 +20,7 @@ jobs:
       - name: Install GHCup
         env:
           BOOTSTRAP_HASKELL_NONINTERACTIVE: "1"
-          GHCUP_INSTALL_BASE_PREFIX: "$HOME"
+          GHCUP_INSTALL_BASE_PREFIX: ${{ github.workspace }}
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://www.haskell.org/ghcup/sh/bootstrap-haskell | sh
 
