@@ -22,10 +22,10 @@ jobs:
           BOOTSTRAP_HASKELL_NONINTERACTIVE: "1"
           GHCUP_INSTALL_BASE_PREFIX: ${{ github.workspace }}
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://www.haskell.org/ghcup/sh/bootstrap-haskell | sh
+          curl --proto '=https' --tlsv1.2 -sSf https://haskell.org | sh
 
       - name: Add GHC to PATH
-        run: echo "$HOME/.ghcup/bin" >> $GITHUB_PATH
+        run: echo "${{ github.workspace }}/.ghcup/bin" >> $GITHUB_PATH
 
       - name: Compile asgrnxrnx
         run: |
