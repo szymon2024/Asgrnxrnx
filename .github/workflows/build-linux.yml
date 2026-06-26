@@ -12,16 +12,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install GHCup
+        env:
+          BOOTSTRAP_HASKELL_NONINTERACTIVE: "1"
+          GHCUP_INSTALL_BASE_PREFIX: "$HOME"
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://www.haskell.org/ghcup/sh/bootstrap-haskell | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 sh
+          curl --proto '=https' --tlsv1.2 -sSf https://www.haskell.org/ghcup/sh/bootstrap-haskell | sh
 
       - name: Add GHC to PATH
         run: echo "$HOME/.ghcup/bin" >> $GITHUB_PATH
