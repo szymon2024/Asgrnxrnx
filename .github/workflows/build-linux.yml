@@ -17,15 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install GHCup
-        env:
-          BOOTSTRAP_HASKELL_NONINTERACTIVE: "1"
-          GHCUP_INSTALL_BASE_PREFIX: ${{ github.workspace }}
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://haskell.org | sh
-
       - name: Add GHC to PATH
-        run: echo "${{ github.workspace }}/.ghcup/bin" >> $GITHUB_PATH
+        env:
+          GHCUP_INSTALL_BASE_PREFIX: "/usr/local"
+        run: echo "/usr/local/.ghcup/bin" >> $GITHUB_PATH
 
       - name: Compile asgrnxrnx
         run: |
